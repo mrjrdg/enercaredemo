@@ -97,7 +97,6 @@ namespace EnercareDemo2.Controllers
             return Challenge(invite_auth, invite_policy);
         }
 
-
         [HttpGet("test")]
         public async Task<ActionResult> Test()
         {

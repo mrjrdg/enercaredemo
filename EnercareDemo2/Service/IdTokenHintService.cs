@@ -8,8 +8,7 @@ namespace EnercareDemo2.Service
         private readonly IConfiguration _configuration;
         private readonly TokenSigningCertificateService _tokenSigningCertificateService;
 
-        public IdTokenHintService(IConfiguration configuration,
-                                  TokenSigningCertificateService tokenSigningCertificateManager)
+        public IdTokenHintService(IConfiguration configuration, TokenSigningCertificateService tokenSigningCertificateManager)
         {
             _configuration = configuration;
             _tokenSigningCertificateService = tokenSigningCertificateManager;

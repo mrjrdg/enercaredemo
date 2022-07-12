@@ -60,6 +60,12 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 
+// Add services to the container.
+var proxyBuilder = builder.Services.AddReverseProxy();
+
+// Initialize the reverse proxy from the "ReverseProxy" section of configuration
+proxyBuilder.LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -68,6 +74,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -80,7 +88,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html");
+
+app.MapReverseProxy();
 
 app.Run();
 

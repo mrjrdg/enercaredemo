@@ -12,9 +12,9 @@ namespace EnercareAzureB2cWebApi.Controllers
         public string Description { get; set; }
     }
     
-    [Authorize]
-    [ApiController]
-    [RequiredScope("api.read")]
+    //[Authorize]
+   // [ApiController]
+   // [RequiredScope("api.read")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
@@ -24,7 +24,7 @@ namespace EnercareAzureB2cWebApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet("items")]
+        [HttpGet("api/items")]
         public async Task<IActionResult> Get()
         {
             return Ok(new List<Item>
